@@ -1,0 +1,4 @@
+1st str
+some text
+here no_error str
+N str

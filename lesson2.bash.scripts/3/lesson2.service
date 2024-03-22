@@ -1,0 +1,8 @@
+[Unit]
+Description=lesson2 empty echo
+
+[Service]
+ExecStart=/root/devops/lesson2/3/echo.sh 
+
+[Install]
+WantedBy=multi-user.target 
