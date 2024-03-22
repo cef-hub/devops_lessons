@@ -1,0 +1,53 @@
+version: '3'
+
+services:
+  # service1 lesson7 pipeline docker-compose Elasticsearch
+  elasticsearch:
+    image: docker.io/elasticsearch:8.12.2
+    environment:
+      - TZ=Europe/Minsk
+    restart: always
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - ./elasticsearch/data:/usr/share/elasticsearch/data
+    networks:
+      - docker-compose
+
+  # service2 lesson7 pipeline docker-compose Logstash
+  logstash:
+    image: docker.io/logstash:8.12.2
+    depends_on:
+      - elasticsearch 
+    environment:
+      - TZ=Europe/Minsk
+    restart: always
+    ports:
+      - "9600:9600"
+      - "5044:5044"
+    volumes:
+      - ./logstash/data:/usr/share/logstash/data
+    networks:
+      - docker-compose
+ 
+  # service3 lesson7 pipeline docker-compose Kibana
+  kibana:
+   image: docker.io/kibana:8.12.2
+   depends_on:
+     - elasticsearch
+   environment:
+     - TZ=Europe/Minsk
+   restart: always
+   ports:
+     - "5601:5601"
+   networks:
+     - docker-compose
+
+networks:
+  docker-compose:
+    driver: bridge
+
+volumes:
+  elasticsearch:
+  logstash:
