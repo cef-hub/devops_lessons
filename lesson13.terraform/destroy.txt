@@ -1,0 +1,253 @@
+D:\terraform\lesson13>terraform destroy
+aws_vpc.skruhlik-terraform-vpc: Refreshing state... [id=vpc-09a280effd1193474]
+aws_subnet.skruhlik-terraform-private-subnet: Refreshing state... [id=subnet-0e5944a5bfbbdffad]
+aws_subnet.skruhlik-terraform-public-subnet: Refreshing state... [id=subnet-0d7340860a0aa4c7d]
+aws_security_group.skruhlik-sg-terraform-ssh22: Refreshing state... [id=sg-084006cb4824c02ee]
+data.aws_security_group.data_skruhlik-sg-terraform-ssh22: Reading...
+aws_instance.skruhlik-terraform-ec2: Refreshing state... [id=i-07aa74effb1cb4be7]
+data.aws_security_group.data_skruhlik-sg-terraform-ssh22: Read complete after 0s [id=sg-084006cb4824c02ee]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # aws_instance.skruhlik-terraform-ec2 will be destroyed
+  - resource "aws_instance" "skruhlik-terraform-ec2" {
+      - ami                                  = "ami-044a3516c1b05985f" -> null
+      - arn                                  = "arn:aws:ec2:us-east-1:097084951758:instance/i-07aa74effb1cb4be7" -> null
+      - associate_public_ip_address          = false -> null
+      - availability_zone                    = "us-east-1d" -> null
+      - cpu_core_count                       = 1 -> null
+      - cpu_threads_per_core                 = 2 -> null
+      - disable_api_stop                     = false -> null
+      - disable_api_termination              = false -> null
+      - ebs_optimized                        = false -> null
+      - get_password_data                    = false -> null
+      - hibernation                          = false -> null
+      - id                                   = "i-07aa74effb1cb4be7" -> null
+      - instance_initiated_shutdown_behavior = "stop" -> null
+      - instance_state                       = "running" -> null
+      - instance_type                        = "t3.micro" -> null
+      - ipv6_address_count                   = 0 -> null
+      - ipv6_addresses                       = [] -> null
+      - key_name                             = "devops" -> null
+      - monitoring                           = false -> null
+      - placement_partition_number           = 0 -> null
+      - primary_network_interface_id         = "eni-0392963e933533832" -> null
+      - private_dns                          = "ip-10-0-10-19.ec2.internal" -> null
+      - private_ip                           = "10.0.10.19" -> null
+      - secondary_private_ips                = [] -> null
+      - security_groups                      = [] -> null
+      - source_dest_check                    = true -> null
+      - subnet_id                            = "subnet-0d7340860a0aa4c7d" -> null
+      - tags                                 = {
+          - "Name" = "skruhlik-terraform-ec2"
+        } -> null
+      - tags_all                             = {
+          - "Name" = "skruhlik-terraform-ec2"
+        } -> null
+      - tenancy                              = "default" -> null
+      - user_data_replace_on_change          = false -> null
+      - vpc_security_group_ids               = [
+          - "sg-084006cb4824c02ee",
+        ] -> null
+
+      - capacity_reservation_specification {
+          - capacity_reservation_preference = "open" -> null
+        }
+
+      - cpu_options {
+          - core_count       = 1 -> null
+          - threads_per_core = 2 -> null
+        }
+
+      - credit_specification {
+          - cpu_credits = "unlimited" -> null
+        }
+
+      - enclave_options {
+          - enabled = false -> null
+        }
+
+      - maintenance_options {
+          - auto_recovery = "default" -> null
+        }
+
+      - metadata_options {
+          - http_endpoint               = "enabled" -> null
+          - http_protocol_ipv6          = "disabled" -> null
+          - http_put_response_hop_limit = 1 -> null
+          - http_tokens                 = "optional" -> null
+          - instance_metadata_tags      = "disabled" -> null
+        }
+
+      - private_dns_name_options {
+          - enable_resource_name_dns_a_record    = false -> null
+          - enable_resource_name_dns_aaaa_record = false -> null
+          - hostname_type                        = "ip-name" -> null
+        }
+
+      - root_block_device {
+          - delete_on_termination = true -> null
+          - device_name           = "/dev/sda1" -> null
+          - encrypted             = false -> null
+          - iops                  = 100 -> null
+          - tags                  = {} -> null
+          - tags_all              = {} -> null
+          - throughput            = 0 -> null
+          - volume_id             = "vol-0a1a96e1e456480ef" -> null
+          - volume_size           = 8 -> null
+          - volume_type           = "gp2" -> null
+        }
+    }
+
+  # aws_security_group.skruhlik-sg-terraform-ssh22 will be destroyed
+  - resource "aws_security_group" "skruhlik-sg-terraform-ssh22" {
+      - arn                    = "arn:aws:ec2:us-east-1:097084951758:security-group/sg-084006cb4824c02ee" -> null
+      - description            = "skruhlik-sg-terraform-ssh22" -> null
+      - egress                 = [
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - description      = ""
+              - from_port        = 0
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "-1"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 0
+            },
+        ] -> null
+      - id                     = "sg-084006cb4824c02ee" -> null
+      - ingress                = [
+          - {
+              - cidr_blocks      = [
+                  - "185.183.33.218/32",
+                  - "86.57.156.230/32",
+                ]
+              - description      = ""
+              - from_port        = 22
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 22
+            },
+        ] -> null
+      - name                   = "skruhlik-sg-terraform-ssh22" -> null
+      - owner_id               = "097084951758" -> null
+      - revoke_rules_on_delete = false -> null
+      - tags                   = {} -> null
+      - tags_all               = {} -> null
+      - vpc_id                 = "vpc-09a280effd1193474" -> null
+    }
+
+  # aws_subnet.skruhlik-terraform-private-subnet will be destroyed
+  - resource "aws_subnet" "skruhlik-terraform-private-subnet" {
+      - arn                                            = "arn:aws:ec2:us-east-1:097084951758:subnet/subnet-0e5944a5bfbbdffad" -> null
+      - assign_ipv6_address_on_creation                = false -> null
+      - availability_zone                              = "us-east-1d" -> null
+      - availability_zone_id                           = "use1-az2" -> null
+      - cidr_block                                     = "10.0.20.0/24" -> null
+      - enable_dns64                                   = false -> null
+      - enable_lni_at_device_index                     = 0 -> null
+      - enable_resource_name_dns_a_record_on_launch    = false -> null
+      - enable_resource_name_dns_aaaa_record_on_launch = false -> null
+      - id                                             = "subnet-0e5944a5bfbbdffad" -> null
+      - ipv6_native                                    = false -> null
+      - map_customer_owned_ip_on_launch                = false -> null
+      - map_public_ip_on_launch                        = false -> null
+      - owner_id                                       = "097084951758" -> null
+      - private_dns_hostname_type_on_launch            = "ip-name" -> null
+      - tags                                           = {
+          - "Name" = "skruhlik-terraform-private-subnet"
+        } -> null
+      - tags_all                                       = {
+          - "Name" = "skruhlik-terraform-private-subnet"
+        } -> null
+      - vpc_id                                         = "vpc-09a280effd1193474" -> null
+    }
+
+  # aws_subnet.skruhlik-terraform-public-subnet will be destroyed
+  - resource "aws_subnet" "skruhlik-terraform-public-subnet" {
+      - arn                                            = "arn:aws:ec2:us-east-1:097084951758:subnet/subnet-0d7340860a0aa4c7d" -> null
+      - assign_ipv6_address_on_creation                = false -> null
+      - availability_zone                              = "us-east-1d" -> null
+      - availability_zone_id                           = "use1-az2" -> null
+      - cidr_block                                     = "10.0.10.0/24" -> null
+      - enable_dns64                                   = false -> null
+      - enable_lni_at_device_index                     = 0 -> null
+      - enable_resource_name_dns_a_record_on_launch    = false -> null
+      - enable_resource_name_dns_aaaa_record_on_launch = false -> null
+      - id                                             = "subnet-0d7340860a0aa4c7d" -> null
+      - ipv6_native                                    = false -> null
+      - map_customer_owned_ip_on_launch                = false -> null
+      - map_public_ip_on_launch                        = false -> null
+      - owner_id                                       = "097084951758" -> null
+      - private_dns_hostname_type_on_launch            = "ip-name" -> null
+      - tags                                           = {
+          - "Name" = "skruhlik-terraform-public-subnet"
+        } -> null
+      - tags_all                                       = {
+          - "Name" = "skruhlik-terraform-public-subnet"
+        } -> null
+      - vpc_id                                         = "vpc-09a280effd1193474" -> null
+    }
+
+  # aws_vpc.skruhlik-terraform-vpc will be destroyed
+  - resource "aws_vpc" "skruhlik-terraform-vpc" {
+      - arn                                  = "arn:aws:ec2:us-east-1:097084951758:vpc/vpc-09a280effd1193474" -> null
+      - assign_generated_ipv6_cidr_block     = false -> null
+      - cidr_block                           = "10.0.0.0/16" -> null
+      - default_network_acl_id               = "acl-02de9c89953a621d3" -> null
+      - default_route_table_id               = "rtb-06f421e746b90bc09" -> null
+      - default_security_group_id            = "sg-08def69e1bed6d9c1" -> null
+      - dhcp_options_id                      = "dopt-01b63a3034854a4b4" -> null
+      - enable_dns_hostnames                 = false -> null
+      - enable_dns_support                   = true -> null
+      - enable_network_address_usage_metrics = false -> null
+      - id                                   = "vpc-09a280effd1193474" -> null
+      - instance_tenancy                     = "default" -> null
+      - ipv6_netmask_length                  = 0 -> null
+      - main_route_table_id                  = "rtb-06f421e746b90bc09" -> null
+      - owner_id                             = "097084951758" -> null
+      - tags                                 = {} -> null
+      - tags_all                             = {} -> null
+    }
+
+Plan: 0 to add, 0 to change, 5 to destroy.
+
+Changes to Outputs:
+  - terraform_instance_id = "i-07aa74effb1cb4be7" -> null
+  - terraform_sg_id       = "sg-084006cb4824c02ee" -> null
+  - terraform_sg_vpc_id   = "vpc-09a280effd1193474" -> null
+
+Do you really want to destroy all resources?
+  Terraform will destroy all your managed infrastructure, as shown above.
+  There is no undo. Only 'yes' will be accepted to confirm.
+
+  Enter a value: yes
+
+aws_subnet.skruhlik-terraform-private-subnet: Destroying... [id=subnet-0e5944a5bfbbdffad]
+aws_instance.skruhlik-terraform-ec2: Destroying... [id=i-07aa74effb1cb4be7]
+aws_subnet.skruhlik-terraform-private-subnet: Destruction complete after 1s
+aws_instance.skruhlik-terraform-ec2: Still destroying... [id=i-07aa74effb1cb4be7, 10s elapsed]
+aws_instance.skruhlik-terraform-ec2: Still destroying... [id=i-07aa74effb1cb4be7, 20s elapsed]
+aws_instance.skruhlik-terraform-ec2: Still destroying... [id=i-07aa74effb1cb4be7, 30s elapsed]
+aws_instance.skruhlik-terraform-ec2: Still destroying... [id=i-07aa74effb1cb4be7, 40s elapsed]
+aws_instance.skruhlik-terraform-ec2: Still destroying... [id=i-07aa74effb1cb4be7, 50s elapsed]
+aws_instance.skruhlik-terraform-ec2: Still destroying... [id=i-07aa74effb1cb4be7, 1m0s elapsed]
+aws_instance.skruhlik-terraform-ec2: Still destroying... [id=i-07aa74effb1cb4be7, 1m10s elapsed]
+aws_instance.skruhlik-terraform-ec2: Destruction complete after 1m13s
+aws_subnet.skruhlik-terraform-public-subnet: Destroying... [id=subnet-0d7340860a0aa4c7d]
+aws_security_group.skruhlik-sg-terraform-ssh22: Destroying... [id=sg-084006cb4824c02ee]
+aws_subnet.skruhlik-terraform-public-subnet: Destruction complete after 0s
+aws_security_group.skruhlik-sg-terraform-ssh22: Destruction complete after 1s
+aws_vpc.skruhlik-terraform-vpc: Destroying... [id=vpc-09a280effd1193474]
+aws_vpc.skruhlik-terraform-vpc: Destruction complete after 2s
+
+Destroy complete! Resources: 5 destroyed.
