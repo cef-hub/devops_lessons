@@ -1,0 +1,60 @@
+version: '3'
+
+services:
+  # service1 lesson6 docker-compose веб-сервер HTTPD 2.4
+  webserver:
+    image: docker.io/library/httpd:2.4-alpine
+    depends_on:
+      - postgres
+    environment:
+      - TZ=Europe/Minsk
+    restart: always
+    ports:
+      - "85:80"
+      - "443:443"
+    volumes:
+      - ./web-content:/usr/local/apache2/htdocs
+      - ./web-config:/usr/local/apache2/conf
+      - ./web-logs:/usr/local/apache2/logs
+    networks:
+      - docker-compose
+    configs:
+      - httpd_config
+      - admin_config
+      - admin_vhost
+
+  # service2 lesson6 docker-compose СУБД-сервер PostgreSQL 16.2
+  postgres:
+    image: docker.io/postgres:16.2-alpine3.19
+    environment:
+      - TZ=Europe/Minsk
+    restart: always
+    environment:
+      POSTGRES_DB: docker-compose
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+      - ./postgres-config:/var/lib/postgresql/data/conf
+    networks:
+      - docker-compose
+
+networks:
+  docker-compose:
+    driver: bridge
+
+configs:
+  httpd_config:
+    file: ./httpd.conf
+  admin_config:
+    file: ./admin.conf
+  admin_vhost:
+    file: ./admin-vhost.conf
+volumes:
+  postgres-data:
+  web-content:
+  web-config:
+  web-logs:
+  postgres-config:
