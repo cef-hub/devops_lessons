@@ -1,0 +1,15 @@
+Resources:
+  MyTransitGatewayAttachment1:
+    Type: "AWS::EC2::TransitGatewayAttachment"
+    Properties:
+      TransitGatewayId: "tgw-0f8e3e046f74da9f9"  
+      VpcId: "vpc-0f4a6c96c2393c4a7"            
+      SubnetIds: 
+        - "subnet-0938840d1cc639bdb" 
+  MyTransitGatewayAttachment2:
+    Type: "AWS::EC2::TransitGatewayAttachment"
+    Properties:
+      TransitGatewayId: "tgw-0f8e3e046f74da9f9"  
+      VpcId: "vpc-0b7b7e744bf4ec257"            
+      SubnetIds: 
+        - "subnet-0e16c5def003224fd" 

@@ -1,0 +1,42 @@
+Resources:
+  # Настройка маршрутов в первой VPC
+  RouteTableVPC1:
+    Type: "AWS::EC2::RouteTable"
+    Properties:
+      VpcId: "vpc-0f4a6c96c2393c4a7"  
+  RouteToTransitGatewayVPC1:
+    Type: "AWS::EC2::Route"
+    Properties:
+      RouteTableId: !Ref RouteTableVPC1
+      DestinationCidrBlock: "172.16.0.0/24" 
+      TransitGatewayId: "tgw-0f8e3e046f74da9f9" 
+
+  # Настройка маршрутов во второй VPC
+  RouteTableVPC2:
+    Type: "AWS::EC2::RouteTable"
+    Properties:
+      VpcId: "vpc-0b7b7e744bf4ec257"  
+  RouteToTransitGatewayVPC2:
+    Type: "AWS::EC2::Route"
+    Properties:
+      RouteTableId: !Ref RouteTableVPC2
+      DestinationCidrBlock: "10.0.1.0/24"  
+      TransitGatewayId: "tgw-0f8e3e046f74da9f9"  
+
+  # Настройка маршрутных таблиц в Transit Gateway
+  TransitGatewayRouteTable:
+    Type: "AWS::EC2::TransitGatewayRouteTable"
+    Properties:
+      TransitGatewayId: "tgw-0f8e3e046f74da9f9" 
+  RouteToVPC1:
+    Type: "AWS::EC2::TransitGatewayRoute"
+    Properties:
+      TransitGatewayRouteTableId: !Ref TransitGatewayRouteTable
+      DestinationCidrBlock: "10.0.1.0/24"  
+      TransitGatewayAttachmentId: "tgw-attach-0023945885c9ee418"  
+  RouteToVPC2:
+    Type: "AWS::EC2::TransitGatewayRoute"
+    Properties:
+      TransitGatewayRouteTableId: !Ref TransitGatewayRouteTable
+      DestinationCidrBlock: "172.16.0.0/24"  
+      TransitGatewayAttachmentId: "tgw-attach-04390dbfa22404ba7"  
