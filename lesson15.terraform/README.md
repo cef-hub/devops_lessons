@@ -1,4 +1,4 @@
-## Initializing Terraform
+## 1.Initializing Terraform
 
 D:\terraform\lesson15_1>terraform init
 
@@ -20,7 +20,7 @@ you run "terraform init" in the future.
 
 Terraform has been successfully initialized!
 
-## File main.tf SSM and VPC module
+## 2.File main.tf SSM and VPC module
 
 ```hcl
 provider "aws" {
@@ -109,13 +109,13 @@ output "vpc_nat_ids" {
 }
 ```
 
-##  Terraform apply
+## 3.Terraform apply
 
 D:\terraform\lesson15_1>terraform apply
 
 Apply complete! Resources: 34 added, 0 changed, 0 destroyed.
 
-##  Outputs
+##  4.Outputs
 
 ```hcl
 ssm_store_name = tolist([
@@ -141,7 +141,8 @@ vpc_public_subnets = [
 vpc_vgw_id = "vgw-0fc8ef653928b5425"
 ```
 
-##  Terraform destroy
+##  5.Terraform destroy
 
 D:\terraform\lesson15_1>terraform destroy
 Destroy complete! Resources: 34 destroyed.
+
