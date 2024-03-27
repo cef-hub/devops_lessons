@@ -144,5 +144,5 @@ vpc_vgw_id = "vgw-0fc8ef653928b5425"
 ##  5.Terraform destroy
 
 D:\terraform\lesson15_1>terraform destroy
-Destroy complete! Resources: 34 destroyed.
 
+Destroy complete! Resources: 34 destroyed.
