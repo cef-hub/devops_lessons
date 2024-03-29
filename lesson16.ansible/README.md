@@ -1,6 +1,6 @@
 ## 1.[root@devops lesson16.ansible]# ansible-playbook -i hosts -l playbook-file-copy-del.yml
 
-'''
+```
 - name: "PlaybookName: Copy file and delete them"
   hosts: ansible_preprod
   become: yes
@@ -27,7 +27,7 @@
       path: "/root/devops/lesson16.ansible/creade_directory/{{ myfile }}"
       state: absent
 
-'''
+```
 
 
 PLAY [PlaybookName: Copy file and delete them] ***********************************************************************************
@@ -49,7 +49,7 @@ ansible_dev_db             : ok=4    changed=2    unreachable=0    failed=0    s
 
 ## 2.[root@devops lesson16.ansible]# ansible-playbook -i hosts -l ansible_preprod playbook-user-create.yml
 
-'''
+```
 
 - name: "Playbook_name: Create user with home directory"
   hosts: ansible_preprod
@@ -75,7 +75,7 @@ ansible_dev_db             : ok=4    changed=2    unreachable=0    failed=0    s
       password: "{{ lookup('file', '/root/devops/lesson16.ansible/passwords.yml') | from_yaml | json_query('users[?name==`lesson16`].password') | first }}"
       append: yes
 
-'''
+```
 
 PLAY [Playbook_name: Create user with home directory] ****************************************************************************
 
@@ -97,7 +97,7 @@ ansible_dev_db             : ok=4    changed=0    unreachable=0    failed=0    s
 
 ## 3.[root@devops lesson16.ansible]#  ansible-playbook -i hosts -l ansible_preprod playbook-docker.yml
 
-'''
+```
 - name: "Playbook_name: Docker install"
   hosts: ansible_preprod
   become: yes
@@ -146,7 +146,7 @@ ansible_dev_db             : ok=4    changed=0    unreachable=0    failed=0    s
       name: "{{ username }}"
       group: docker
 
-'''
+```
 
 PLAY [Playbook_name: Docker install] *********************************************************************************************
 
