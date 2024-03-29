@@ -1,0 +1,47 @@
+- name: "Playbook_name: Docker install"
+  hosts: ansible_preprod
+  become: yes
+  vars:
+    username: lesson16
+
+  tasks:
+  - name: "Task1: Ping the ansible_dev environment"
+    ping:
+
+  - name: "Task2: Add Docker repo"
+    yum_repository:
+      name: docker
+      description: repo for docker
+      baseurl: https://download.docker.com/linux/centos/9/x86_64/stable/
+      gpgcheck: no
+
+  - name: "Task3: Installing docker"
+    command:
+      cmd: yum install docker-ce --nobest -y
+
+
+  - name: "Task4: Starting and enabling docker service"
+    service:
+      name: docker
+      state: started
+      enabled: yes
+
+  - name: "Task5: Install python3.12"
+    package:
+      name: python3
+      state: present
+
+  - name: "Task6: Install pip3"
+    yum:
+      name: python3-pip
+      state: present
+
+  - name: "Task7: Add conf pip for docker"
+    pip:
+      name: docker-py
+      executable: pip3
+
+  - name: "Task8: Add the user {{ username }} to a primary group dcoker"
+    ansible.builtin.user:
+      name: "{{ username }}"
+      group: docker

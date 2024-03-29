@@ -1,0 +1,24 @@
+- name: "Playbook_name: Create user with home directory"
+  hosts: ansible_preprod
+  become: yes
+  vars:
+    username: lesson16
+
+  tasks:
+  - name: "Task1: Ping the ansible_dev environment"
+    ping:
+
+  - name: "Task2: create group {{ username }}"
+    ansible.builtin.group:
+      name: "{{ username }}"
+      state: present
+
+  - name: "Task3: Create user with user group home directory and passwd"
+    ansible.builtin.user:
+      name: "{{ username }}"
+      shell: /bin/bash
+      home: "/home/{{ username }}"
+      groups: "{{ username }}"
+      password: "{{ lookup('file', '/root/devops/lesson16.ansible/passwords.yml') | from_yaml | json_query('users[?name==`lesson16`].password') | first }}"
+      append: yes
+

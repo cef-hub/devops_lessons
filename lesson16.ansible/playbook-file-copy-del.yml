@@ -1,0 +1,25 @@
+- name: "PlaybookName: Copy file and delete them"
+  hosts: ansible_preprod
+  become: yes
+  vars:
+    myfile: ansible.cfg    
+
+  tasks:
+
+  - name: "Task1: Creates directory"
+    ansible.builtin.file:
+      path: /root/devops/lesson16.ansible/creade_directory/
+      state: directory  
+
+  - name: "Task2: copy file"
+    ansible.builtin.copy:
+      src: "/root/devops/lesson16.ansible/{{ myfile }}"
+      dest: /root/devops/lesson16.ansible/creade_directory/
+      owner: root
+      group: root
+      mode: 0600
+
+  - name: "Task3: delete file"
+    ansible.builtin.file:
+      path: "/root/devops/lesson16.ansible/creade_directory/{{ myfile }}"
+      state: absent
