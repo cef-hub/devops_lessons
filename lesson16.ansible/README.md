@@ -29,7 +29,7 @@
 
 ```
 
-
+<sub>
 PLAY [PlaybookName: Copy file and delete them] ***********************************************************************************
 
 TASK [Gathering Facts] ***********************************************************************************************************
@@ -46,6 +46,7 @@ changed: [ansible_dev_db]
 
 PLAY RECAP ***********************************************************************************************************************
 ansible_dev_db             : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+</sub>
 
 ## 2.[root@devops lesson16.ansible]# ansible-playbook -i hosts -l ansible_preprod playbook-user-create.yml
 
