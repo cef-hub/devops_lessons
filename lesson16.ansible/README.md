@@ -46,6 +46,7 @@ TASK [Task3: delete file] ******************************************************
 changed: [ansible_dev_db]
 
 PLAY RECAP ***********************************************************************************************************************
+
 ansible_dev_db             : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 
 </sub>
@@ -98,6 +99,7 @@ TASK [Task3: Create user with user group home directory and passwd] ************
 ok: [ansible_dev_db]
 
 PLAY RECAP ***********************************************************************************************************************
+
 ansible_dev_db             : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 
 </sub>
@@ -187,6 +189,7 @@ TASK [Task8: Add the user lesson16 to a primary group dcoker] ******************
 ok: [ansible_dev_db]
 
 PLAY RECAP ***********************************************************************************************************************
+
 ansible_dev_db             : ok=9    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 
 </sub>
