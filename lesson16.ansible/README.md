@@ -1,4 +1,4 @@
-## 1.[root@devops lesson16.ansible]# ansible-playbook -i hosts -l playbook-file-copy-del.yml
+## 1.[root@devops lesson16.ansible]# ansible-playbook -i hosts -l ansible_preprod playbook-file-copy-del.yml
 
 ```
 - name: "PlaybookName: Copy file and delete them"
