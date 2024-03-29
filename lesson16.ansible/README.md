@@ -30,6 +30,7 @@
 ```
 
 <sub>
+
 PLAY [PlaybookName: Copy file and delete them] ***********************************************************************************
 
 TASK [Gathering Facts] ***********************************************************************************************************
@@ -46,6 +47,7 @@ changed: [ansible_dev_db]
 
 PLAY RECAP ***********************************************************************************************************************
 ansible_dev_db             : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
 </sub>
 
 ## 2.[root@devops lesson16.ansible]# ansible-playbook -i hosts -l ansible_preprod playbook-user-create.yml
@@ -78,6 +80,8 @@ ansible_dev_db             : ok=4    changed=2    unreachable=0    failed=0    s
 
 ```
 
+<sub>
+
 PLAY [Playbook_name: Create user with home directory] ****************************************************************************
 
 TASK [Gathering Facts] ***********************************************************************************************************
@@ -95,6 +99,8 @@ ok: [ansible_dev_db]
 
 PLAY RECAP ***********************************************************************************************************************
 ansible_dev_db             : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+</sub>
 
 ## 3.[root@devops lesson16.ansible]#  ansible-playbook -i hosts -l ansible_preprod playbook-docker.yml
 
@@ -149,6 +155,8 @@ ansible_dev_db             : ok=4    changed=0    unreachable=0    failed=0    s
 
 ```
 
+<sub>
+
 PLAY [Playbook_name: Docker install] *********************************************************************************************
 
 TASK [Gathering Facts] ***********************************************************************************************************
@@ -180,3 +188,5 @@ ok: [ansible_dev_db]
 
 PLAY RECAP ***********************************************************************************************************************
 ansible_dev_db             : ok=9    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+</sub>
