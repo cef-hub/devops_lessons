@@ -180,8 +180,11 @@ TASK [Task3: Start ec2 instances] **********************************************
 changed: [localhost]
 
 TASK [Task4: Pause for 60 seconds] ***************************************************************************************************************************************
+
 Pausing for 60 seconds
+
 (ctrl+C then 'C' = continue early, ctrl+C then 'A' = abort)
+
 ok: [localhost]
 
 TASK [Task5: Run script to get ec2_tag_Name and ip_address] **************************************************************************************************************
@@ -199,12 +202,15 @@ ED25519 key fingerprint is SHA256:pca9bS10GXGg4Pbko1c7ddPGLS7Rfm3aSbhb/faMS0k.
 This key is not known by any other names
 
 Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+
 changed: [localhost -> 54.234.140.245]
 
 TASK [Task7: Start Docker service] ***************************************************************************************************************************************
+
 changed: [localhost -> 54.234.140.245]
 
 TASK [Task8: Run Docker container] ***************************************************************************************************************************************
+
 changed: [localhost -> 54.234.140.245]
 
 TASK [Task9 Terminate instances that were previously launched] ***********************************************************************************************************
