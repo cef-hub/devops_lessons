@@ -105,7 +105,7 @@ name_ec2_node1: s.kruhlik-ec2-ansible
 
 ```
 
-## 3. Создали файл парсер ec2.py ec2.ini
+## 3. Создали файл parser_tag.py парсер для ec2.py ec2.ini
 
 ```
 
