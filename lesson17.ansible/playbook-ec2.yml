@@ -1,0 +1,90 @@
+- name: "PlaybookName: Create EC2 instance"
+  hosts: localhost
+  become: yes
+  vars_files:
+    - group_vars/vars_ec2.yml
+
+  tasks:
+
+    - name: "Task2: Install Python pakets"
+      pip:
+        name:
+          - botocore
+          - boto3
+
+    - name: "Task3: Start ec2 instances"
+      amazon.aws.ec2_instance:
+        name: "{{ name_ec2_node1 }}"
+        instance_type: t2.micro
+        image_id: ami-044a3516c1b05985f
+#        count: 1
+        region: "{{ region }}"
+        network:
+          assign_public_ip: true
+          security_group: lesson10
+          vpc_subnet_id: default
+        key_name: devops
+        aws_access_key: "{{ access_key }}"
+        aws_secret_key: "{{ secret_key }}"
+        region: "{{ region }}"
+        tags:
+          s.kruhlik: dev_environment
+
+    - name: "Task4: Pause for 60 seconds"
+      pause:
+        seconds: 60
+        
+    - name: "Task5: Run script to get ec2_tag_Name and ip_address"
+      command: ./parser_tag.py
+      register: parser_output
+      become: true
+
+    - set_fact:
+        ec2_tag_Name: "{{ parser_output.stdout | from_json | json_query(\"ec2_tag_Name\") }}"
+        ip_address_ec2: "{{ parser_output.stdout | from_json | json_query(\"ip_address_ec2\") }}"
+        ec2_instance_ids: "{{ parser_output.stdout | from_json | json_query(\"ec2_id\") }}"
+
+    - name: "Task6: Install Docker"
+      delegate_to: "{{ ip_address_ec2 }}"
+      become: true
+      remote_user: ec2-user
+      environment:
+        ANSIBLE_REMOTE_TMP: /tmp/.ansible/tmp     
+      vars:
+        ansible_ssh_private_key_file: ./devops.pem
+      shell: "curl -fsSL https://get.docker.com -o get-docker.sh && sh get-docker.sh"
+      when: ec2_tag_Name is defined
+
+    - name: "Task7: Start Docker service"
+      delegate_to: "{{ ip_address_ec2 }}"
+      become: true
+      remote_user: ec2-user
+      environment:
+        ANSIBLE_REMOTE_TMP: /tmp/.ansible/tmp     
+      vars:
+        ansible_ssh_private_key_file: ./devops.pem
+      service:
+        name: docker
+        state: started
+      when: ec2_tag_Name is defined
+
+    - name: "Task8: Run Docker container"
+      delegate_to: "{{ ip_address_ec2 }}"
+      become: true
+      remote_user: ec2-user
+      environment:
+        ANSIBLE_REMOTE_TMP: /tmp/.ansible/tmp     
+      vars:
+        ansible_ssh_private_key_file: ./devops.pem
+      docker_container:
+        name: docker_httpd
+        image: httpd:latest
+        state: started
+        ports:
+          - "80:80"
+      when: ansible_os_family == 'RedHat' and ec2_tag_Name is defined
+
+    - name: "Task9 Terminate instances that were previously launched"
+      amazon.aws.ec2_instance:
+        state: "absent"
+        instance_ids: "{{ ec2_instance_ids }}"
