@@ -1,14 +1,14 @@
-## 1. Создали файл с переменными
+## 1. Создали файл с переменными group_vars/vars_ec2.yml
 
 ```
-<access_key>
-<secret_key>
+access_key: <access_key>
+secret_key: <secret_key>
 region: us-east-1
 name_ec2_node1: s.kruhlik-ec2-ansible
 
 ```
 
-## 2. Создали файл Playbook-ec2
+## 2. Создали файл Playbook playbook-ec2.yml
 
 ```
 
@@ -152,7 +152,7 @@ except KeyError as e:
 
 ```
 
-## 4. Запустили Playbook 
+## 4. Запустили Playbook playbook-ec2.yml
 
 ```
 
@@ -172,8 +172,11 @@ TASK [Task2: Install Python pakets] ********************************************
 ok: [localhost]
 
 TASK [Task3: Start ec2 instances] ****************************************************************************************************************************************
+
 [WARNING]: Both option access_key and its alias aws_access_key are set.
+
 [WARNING]: Both option secret_key and its alias aws_secret_key are set.
+
 changed: [localhost]
 
 TASK [Task4: Pause for 60 seconds] ***************************************************************************************************************************************
@@ -188,9 +191,13 @@ TASK [set_fact] ****************************************************************
 ok: [localhost]
 
 TASK [Task6: Install Docker] *********************************************************************************************************************************************
+
 The authenticity of host '54.234.140.245 (54.234.140.245)' can't be established.
+
 ED25519 key fingerprint is SHA256:pca9bS10GXGg4Pbko1c7ddPGLS7Rfm3aSbhb/faMS0k.
+
 This key is not known by any other names
+
 Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 changed: [localhost -> 54.234.140.245]
 
