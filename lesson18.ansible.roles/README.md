@@ -318,8 +318,7 @@ ansible_dev_db             : ok=28   changed=21   unreachable=0    failed=0    s
   CPU: 5.097s
 
   CGroup: /system.slice/tomcat.service
-  
-             └─446550 /usr/lib/jvm/jre/bin/java -Djava.util.logging.config.file=/opt/tomcat/conf/logging.properties -Djava.util.logging.>
+  └─446550 /usr/lib/jvm/jre/bin/java -Djava.util.logging.config.file=/opt/tomcat/conf/logging.properties -Djava.util.logging.>
 
 Apr 05 03:55:17 localhost.localdomain systemd[1]: Starting Apache Tomcat Web Application Container...
 
@@ -637,30 +636,39 @@ TASK [Task2: Display reboot msg on screen] *************************************
 ok: [ansible_dev_db] => (item=Reboot Countdown) => {
     "msg": "The system will be rebooted in 10 seconds"
 }
+
 ok: [ansible_dev_db] => (item=Reboot Countdown) => {
     "msg": "The system will be rebooted in 9 seconds"
 }
+
 ok: [ansible_dev_db] => (item=Reboot Countdown) => {
     "msg": "The system will be rebooted in 8 seconds"
 }
+
 ok: [ansible_dev_db] => (item=Reboot Countdown) => {
     "msg": "The system will be rebooted in 7 seconds"
 }
+
 ok: [ansible_dev_db] => (item=Reboot Countdown) => {
     "msg": "The system will be rebooted in 6 seconds"
 }
+
 ok: [ansible_dev_db] => (item=Reboot Countdown) => {
     "msg": "The system will be rebooted in 5 seconds"
 }
+
 ok: [ansible_dev_db] => (item=Reboot Countdown) => {
     "msg": "The system will be rebooted in 4 seconds"
 }
+
 ok: [ansible_dev_db] => (item=Reboot Countdown) => {
     "msg": "The system will be rebooted in 3 seconds"
 }
+
 ok: [ansible_dev_db] => (item=Reboot Countdown) => {
     "msg": "The system will be rebooted in 2 seconds"
 }
+
 ok: [ansible_dev_db] => (item=Reboot Countdown) => {
     "msg": "The system will be rebooted in 1 seconds"
 }
