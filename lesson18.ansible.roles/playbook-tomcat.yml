@@ -30,3 +30,42 @@
       when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '9' and tomcat_version is defined
       role_dependencies:
         - { role: zaxos.tomcat-ansible-role, task: "Task1: Check available version Tomcat" }
+
+  tasks:
+
+    - name: "Task2: Display reboot msg on screen"
+      
+      debug:
+        msg: "The system will be rebooted in {{ item }} seconds"
+      loop: "{{ range(10, 0, -1) }}"
+      loop_control:
+        pause: 1
+        label: "Reboot Countdown"
+      register: reboot_output
+      changed_when: false
+    
+    - name: "Task2: Reboot CentOS Server"  
+      reboot:
+        pre_reboot_delay: 2
+        post_reboot_delay: 3
+      when: reboot_output is not skipped    
+      
+    - name: "Task3: Wait for server to come back online"
+      wait_for:
+        port: 22
+        delay: 3
+        timeout: 300
+        state: started 
+      vars:
+        ansible_ssh_user: "root"
+        ansible_ssh_private_key_file: ./id_rsa
+        
+    - name: "Task4: Send info msg after Reboot on terminal"
+      shell: echo "Server CentOS with Tomcat has rebooted"
+    
+    - name: "Task5: Send info msg after Reboot on Ansible output"
+      debug:
+        msg: "Server CentOS with Tomcat has rebooted"
+        
+    - name: "Task6: Repeate Tomcat Installation Role"
+      meta: flush_handlers
