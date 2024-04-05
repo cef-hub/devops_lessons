@@ -302,18 +302,29 @@ ansible_dev_db             : ok=28   changed=21   unreachable=0    failed=0    s
 <sub>
 
 ● tomcat.service - Apache Tomcat Web Application Container
+
      Loaded: loaded (/etc/systemd/system/tomcat.service; enabled; preset: disabled)
+
      Active: active (running) since Fri 2024-04-05 03:55:17 EDT; 10min ago
+
     Process: 446543 ExecStart=/opt/tomcat/bin/startup.sh (code=exited, status=0/SUCCESS)
+
    Main PID: 446550 (java)
+
       Tasks: 28 (limit: 23026)
+
      Memory: 150.6M
+
         CPU: 5.097s
+
      CGroup: /system.slice/tomcat.service
+
              └─446550 /usr/lib/jvm/jre/bin/java -Djava.util.logging.config.file=/opt/tomcat/conf/logging.properties -Djava.util.logging.>
 
 Apr 05 03:55:17 localhost.localdomain systemd[1]: Starting Apache Tomcat Web Application Container...
+
 Apr 05 03:55:17 localhost.localdomain startup.sh[446543]: Tomcat started.
+
 Apr 05 03:55:17 localhost.localdomain systemd[1]: Started Apache Tomcat Web Application Container.
 
 </sub>
