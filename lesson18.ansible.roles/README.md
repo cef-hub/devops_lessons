@@ -16,7 +16,7 @@ pass2: "cef"
 
 ```
 
-## 3. Создали файл Playbook playbook-tomcat.ymlcat
+## 3. Создали файл Playbook playbook-tomcat.yml
 
 ```
 
