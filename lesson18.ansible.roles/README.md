@@ -329,9 +329,12 @@ Apr 05 03:55:17 localhost.localdomain systemd[1]: Started Apache Tomcat Web Appl
 
 </sub>
 
+
 ## 6. Добавили в файл Playbook playbook-tomcat.yml перезагрузку сервера и перезапуск роли zaxos.tomcat-ansible-role
 
--- name: "Role install Tomcat"
+```
+
+- name: "Role install Tomcat"
   hosts: ansible_preprod
   become: true
 
@@ -402,6 +405,8 @@ Apr 05 03:55:17 localhost.localdomain systemd[1]: Started Apache Tomcat Web Appl
         
     - name: "Task6: Repeate Tomcat Installation Role"
       meta: flush_handlers
+
+```	  
 	  
 ## 7. Запустили Playbook playbook-tomcat.yml повторный вывод
 
@@ -630,43 +635,33 @@ skipping: [ansible_dev_db]
 TASK [Task2: Display reboot msg on screen] *******************************************************************************************************************************
 
 ok: [ansible_dev_db] => (item=Reboot Countdown) => {
-
     "msg": "The system will be rebooted in 10 seconds"
 }
 ok: [ansible_dev_db] => (item=Reboot Countdown) => {
-
     "msg": "The system will be rebooted in 9 seconds"
 }
 ok: [ansible_dev_db] => (item=Reboot Countdown) => {
-
     "msg": "The system will be rebooted in 8 seconds"
 }
 ok: [ansible_dev_db] => (item=Reboot Countdown) => {
-
     "msg": "The system will be rebooted in 7 seconds"
 }
 ok: [ansible_dev_db] => (item=Reboot Countdown) => {
-
     "msg": "The system will be rebooted in 6 seconds"
 }
 ok: [ansible_dev_db] => (item=Reboot Countdown) => {
-
     "msg": "The system will be rebooted in 5 seconds"
 }
 ok: [ansible_dev_db] => (item=Reboot Countdown) => {
-
     "msg": "The system will be rebooted in 4 seconds"
 }
 ok: [ansible_dev_db] => (item=Reboot Countdown) => {
-
     "msg": "The system will be rebooted in 3 seconds"
 }
 ok: [ansible_dev_db] => (item=Reboot Countdown) => {
-
     "msg": "The system will be rebooted in 2 seconds"
 }
 ok: [ansible_dev_db] => (item=Reboot Countdown) => {
-
     "msg": "The system will be rebooted in 1 seconds"
 }
 
@@ -685,7 +680,6 @@ changed: [ansible_dev_db]
 TASK [Task5: Send info msg after Reboot on Ansible output] ***************************************************************************************************************
 
 ok: [ansible_dev_db] => {
-
     "msg": "Server CentOS with Tomcat has rebooted"
 }
 
