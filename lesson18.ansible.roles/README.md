@@ -318,6 +318,7 @@ ansible_dev_db             : ok=28   changed=21   unreachable=0    failed=0    s
   CPU: 5.097s
 
   CGroup: /system.slice/tomcat.service
+  
              └─446550 /usr/lib/jvm/jre/bin/java -Djava.util.logging.config.file=/opt/tomcat/conf/logging.properties -Djava.util.logging.>
 
 Apr 05 03:55:17 localhost.localdomain systemd[1]: Starting Apache Tomcat Web Application Container...
