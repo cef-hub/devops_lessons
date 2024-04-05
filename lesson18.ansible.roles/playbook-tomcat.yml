@@ -1,0 +1,32 @@
+- name: "Role install Tomcat"
+  hosts: ansible_preprod
+  become: true
+
+  vars_files:
+    - group_vars/tomcat_vars.yml
+
+  pre_tasks:
+    - name: "Task1: Check available version Tomcat"
+      shell: dnf info tomcat | grep Version
+      register: tomcat_info
+      when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '9'
+
+    - set_fact:
+        tomcat_version: "{{ tomcat_info.stdout_lines[0].split(':')[1].strip() }}"
+      when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '9' and tomcat_info is defined
+
+  roles:
+    - role: zaxos.tomcat-ansible-role
+      vars:
+        tomcat_version: "{{ tomcat_version }}"
+        tomcat_permissions_production: True
+        tomcat_users:
+          - username: "tomcat"
+            password: "{{ pass1 }}"
+            roles: "tomcat,admin,manager,manager-gui"
+          - username: "cef"
+            password: "{{ pass2 }}"
+            roles: "tomcat"
+      when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '9' and tomcat_version is defined
+      role_dependencies:
+        - { role: zaxos.tomcat-ansible-role, task: "Task1: Check available version Tomcat" }
