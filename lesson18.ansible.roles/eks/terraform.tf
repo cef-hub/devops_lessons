@@ -8,7 +8,7 @@ terraform {
       name = "skruhlik-eks-cluster"
     }
 	organization = "skruhlik-eks-cluster"
-	token         = ""
+	token         = "token"
   }
 
   required_providers {
