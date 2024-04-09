@@ -8,7 +8,7 @@ terraform {
       name = "skruhlik-eks-cluster"
     }
 	organization = "skruhlik-eks-cluster"
-	token         = "pI2zPEdugCq0yw.atlasv1.QJ5B1DkUwxcFTGKLdeyEjC2xmJHPeJ6cGxUMlA1d7pKuAR7dqWvnvxFXfODucAnXEzw"
+	token         = ""
   }
 
   required_providers {
