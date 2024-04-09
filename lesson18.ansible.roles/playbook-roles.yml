@@ -1,0 +1,6 @@
+- name: Snippets regarding postgres key parameter configuration
+  hosts: all
+  become: true
+
+  roles:
+    - geerlingguy.mysql
