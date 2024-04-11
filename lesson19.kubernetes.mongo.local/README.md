@@ -129,6 +129,8 @@ mongo-0   1/1     Running   0          31m
 
 ## 6. Add PortForwarding to port 27017
 
-![Результат PortForwarding](https://github.com/cef-hub/devops_lessons/blob/main/lesson19.kubernetes.mongo.local/images/portforwarding.png?raw=true)
+![Результат PortForwarding lens](https://github.com/cef-hub/devops_lessons/blob/main/lesson19.kubernetes.mongo.local/images/lens.png?raw=true)
+
+![Результат PortForwarding browser](https://github.com/cef-hub/devops_lessons/blob/main/lesson19.kubernetes.mongo.local/images/portforwarding.png?raw=true)
 
 
