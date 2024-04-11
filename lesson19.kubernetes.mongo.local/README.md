@@ -101,3 +101,34 @@ spec:
           claimName: mongo-pv-claim          
 		  
 ```
+
+## 5. Run some commands
+
+```
+
+D:\Kubernetes\19_mongo>aws eks update-kubeconfig --name skruhlik-eks-cluster
+Added new context arn:aws:eks:us-east-1:097084951758:cluster/skruhlik-eks-cluster to C:\Users\svuatoslav.kruhlik\.kube\config
+
+D:\Kubernetes\19_mongo>kubectl apply -f mongodb-pv.yaml
+persistentvolume/mongo-pv-volume created
+
+D:\Kubernetes\19_mongo>kubectl apply -f mongodb-secrets.yaml
+secret/mongo-secret created
+
+D:\Kubernetes\19_mongo>kubectl apply -f mongodb-pvc.yaml
+persistentvolumeclaim/mongo-pv-claim created
+
+D:\Kubernetes\19_mongo>kubectl apply -f mongodb-deployment.yaml
+statefulset.apps/mongo created
+
+D:\Kubernetes\19_mongo>kubectl get pods
+NAME      READY   STATUS    RESTARTS   AGE
+mongo-0   1/1     Running   0          31m
+
+```
+
+## 6. Add PortForwarding to port 27017
+
+![Результат PortForwarding](https://github.com/cef-hub/devops_lessons/blob/main/lesson19.kubernetes.mongo.local/images/portforwarding.png?raw=true)
+
+
